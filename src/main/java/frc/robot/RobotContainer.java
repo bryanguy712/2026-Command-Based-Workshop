@@ -6,9 +6,16 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.command.TeleopDriveCommand;
+import frc.robot.subsystem.DriveSubsystem;
 
 public class RobotContainer {
+  private final DriveSubsystem driveSubsystem = new DriveSubsystem();
+  private final TeleopDriveCommand TeleopDriveCommand = new TeleopDriveCommand(driveSubsystem);
+
   public RobotContainer() {
+    driveSubsystem.setDefaultCommand(TeleopDriveCommand);
+
     configureBindings();
   }
 
